@@ -1,3 +1,5 @@
+package KafkaSubscribers;
+
 import ballerina.net.kafka;
 
 @Description{value : "Service level annotation to provide Kafka consumer configuration. Here enable.auto.commit = false"}
