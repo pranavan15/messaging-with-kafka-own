@@ -18,7 +18,7 @@ service<kafka> franchiseeService2 {
             blob serializedMsg = records[counter].value;
             string msg = serializedMsg.toString("UTF-8");
             // log the retrieved Kafka record.
-            log:printInfo("Franchisee 2 - New message received from the publisher");
+            log:printInfo("Franchisee 2 - New message received from the product admin");
             log:printInfo("Franchisee 2 - Topic: " + records[counter].topic + "; Received Message: " + msg);
             counter = counter + 1;
         }

@@ -18,9 +18,9 @@ service<kafka> inventoryControlService {
             blob serializedMsg = records[counter].value;
             string msg = serializedMsg.toString("UTF-8");
             // log the retrieved Kafka record.
-            log:printInfo("Inventory control system - New message received from the publisher");
+            log:printInfo("Inventory control system - New message received from the product admin");
             log:printInfo("Inventory control system - Topic: " + records[counter].topic + "; Received Message: " + msg);
-            log:printInfo("Inventory control system - Price updated");
+            log:printInfo("Inventory control system - Price updated for the specified product");
             counter = counter + 1;
         }
     }
