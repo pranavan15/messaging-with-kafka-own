@@ -3,8 +3,8 @@ import ballerina.net.kafka;
 @Description{value : "Service level annotation to provide Kafka consumer configuration. Here enable.auto.commit = false"}
 @kafka:configuration {
     bootstrapServers: "localhost:9092, localhost:9093",
-    groupId: "group-id",
-    topics: ["new-test-topic"],
+    groupId: "franchisee2",
+    topics: ["product-price"],
     pollingInterval: 1000
 }
 service<kafka> kafkaService {

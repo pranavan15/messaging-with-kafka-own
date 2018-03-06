@@ -4,7 +4,7 @@ import ballerina.net.kafka;
 @kafka:configuration {
     bootstrapServers: "localhost:9092, localhost:9093",
     groupId: "franchisee1",
-    topics: ["new-test-topic"],
+    topics: ["product-price"],
     pollingInterval: 1000
 }
 service<kafka> kafkaService {
