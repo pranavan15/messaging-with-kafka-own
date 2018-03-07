@@ -2,7 +2,7 @@
 This guide walks you through the process of messaging with Apache Kafka using Ballerina language. Kafka is a distributed, partitioned, replicated commit log service. It provides the functionality of a publish-subscribe messaging system with a unique design.
 
 ## <a name="what-you-build"></a>  What you’ll build
-To understanding how you can use Kafka for publish-subscribe messaging, let's consider a real-world use case of a business system. 
+To understanding how you can use Kafka for publish-subscribe messaging, let's consider a real-world use case of a product management system. 
 
 ## <a name="pre-req"></a> Prerequisites
 - JDK 1.8 or later
@@ -24,16 +24,17 @@ Ballerina is a complete programming language that can have any custom project st
 
 ```
 messaging-with-kafka
-├── KafkaPublisher
-│   ├── product_admin_portal.bal
-│   └── product_admin_portal_test.bal
-├── KafkaSubscribers
-│   ├── Franchisee1
-│   │   └── franchisee1.bal
-│   ├── Franchisee2
-│   │   └── franchisee2.bal
-│   └── InventoryControlSystem
-│       └── inventory_control_system.bal
+├── ProductManagementSystem
+│   ├── KafkaPublisher
+│   │   ├── product_admin_portal.bal
+│   │   └── product_admin_portal_test.bal
+│   └── KafkaSubscribers
+│       ├── Franchisee1
+│       │   └── franchisee1.bal
+│       ├── Franchisee2
+│       │   └── franchisee2.bal
+│       └── InventoryControlSystem
+│           └── inventory_control_system.bal
 └── README.md
 
 ```
