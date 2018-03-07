@@ -20,6 +20,22 @@ Optional Requirements
 ##### Understand the package structure
 Ballerina is a complete programming language that can have any custom project structure as you wish. Although language allows you to have any package structure, we'll stick with the following package structure for this project.
 
+```
+messaging-with-kafka
+├── KafkaPublisher
+│   ├── product_admin_portal.bal
+│   └── product_admin_portal_test.bal
+├── KafkaSubscribers
+│   ├── Franchisee1
+│   │   └── franchisee1.bal
+│   ├── Franchisee2
+│   │   └── franchisee2.bal
+│   └── InventoryControlSystem
+│       └── inventory_control_system.bal
+└── README.md
+
+```
+
 ### <a name="Implementation"></a> Implementation
 
 Let's get started with the implementation of `_.bal`file, which contains the _. Refer the code attached below. Inline comments are added for better understanding.
