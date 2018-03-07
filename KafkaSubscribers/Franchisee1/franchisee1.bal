@@ -1,9 +1,9 @@
-package KafkaSubscribers;
+package KafkaSubscribers.Franchisee1;
 
 import ballerina.net.kafka;
 import ballerina.log;
 
-@Description {value:"Service level annotation to provide Kafka consumer configuration. Here enable.auto.commit = false"}
+@Description {value:"Service level annotation to provide Kafka consumer configuration"}
 @kafka:configuration {
     bootstrapServers:"localhost:9092, localhost:9093",
     groupId:"franchisee1",
@@ -18,8 +18,9 @@ service<kafka> franchiseeService1 {
             blob serializedMsg = records[counter].value;
             string msg = serializedMsg.toString("UTF-8");
             // log the retrieved Kafka record.
-            log:printInfo("Franchisee 1 - New message received from the product admin");
-            log:printInfo("Franchisee 1 - Topic: " + records[counter].topic + "; Received Message: " + msg);
+            log:printInfo("New message received from the product admin");
+            log:printInfo("Topic: " + records[counter].topic + "; Received Message: " + msg);
+            log:printInfo("Acknowledgement from Franchisee 1");
             counter = counter + 1;
         }
     }

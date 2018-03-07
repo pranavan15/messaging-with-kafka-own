@@ -49,7 +49,7 @@ service<http> productAdminService {
         blob serializedMsg = priceUpdateInfo.toString().toBlob("UTF-8");
         // We create ProducerRecord which consist of advanced optional parameters.
         // Here we set valid partition number which will be used when sending the record.
-        kafka:ProducerRecord record = {value:serializedMsg, topic:"product-price", partition:1};
+        kafka:ProducerRecord record = {value:serializedMsg, topic:"product-price", partition:0};
 
         // We create a producer configs with optional parameters client.id - used for broker side logging.
         // Acks - number of acknowledgments for request complete, noRetries - number of retries if record send fails.
