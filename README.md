@@ -1,8 +1,10 @@
 # Messaging with Kafka
-This guide walks you through the process of messaging with Apache Kafka using Ballerina language. Kafka is a distributed, partitioned, replicated commit log service. It provides the functionality of a publish-subscribe messaging system with a unique design.
+This guide walks you through the process of messaging with Apache Kafka using Ballerina language. Kafka is a distributed, partitioned, replicated commit log service. It provides the functionality of a publish-subscribe messaging system with a unique design. Kafka mainly operates based on a topic model. A topic is a category or feed name to which records published. Topics in Kafka are always multi-subscriber.
 
 ## <a name="what-you-build"></a>  What you’ll build
-To understanding how you can use Kafka for publish-subscribe messaging, let's consider a real-world use case of a product management system. 
+To understanding how you can use Kafka for publish-subscribe messaging, let's consider a real-world use case of a product management system. This product management system consists of a product admin portal using which the product administrator can update the price for a product. This price update message should be consumed by a couple of franchisees and an inventory control system to take appropriate actions. Kafka is an ideal messaging system for this scenario. In this particular use case, once the admin updates the price of a product, the update message is published to a Kafka topic called 'product-price' to which the franchisees and the inventory control system subscribed to listen. The below diagram illustrates this use case clearly.
+
+
 
 ## <a name="pre-req"></a> Prerequisites
 - JDK 1.8 or later
@@ -24,16 +26,16 @@ Ballerina is a complete programming language that can have any custom project st
 
 ```
 messaging-with-kafka
-├── ProductManagementSystem
-│   ├── KafkaPublisher
+├── ProductMgtSystem
+│   ├── Publisher
 │   │   ├── product_admin_portal.bal
 │   │   └── product_admin_portal_test.bal
-│   └── KafkaSubscribers
+│   └── Subscribers
 │       ├── Franchisee1
 │       │   └── franchisee1.bal
 │       ├── Franchisee2
 │       │   └── franchisee2.bal
-│       └── InventoryControlSystem
+│       └── InventoryControl
 │           └── inventory_control_system.bal
 └── README.md
 
