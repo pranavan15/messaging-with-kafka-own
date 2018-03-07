@@ -1,4 +1,4 @@
-package KafkaSubscribers.Franchisee1;
+package ProductMgtSystem.Subscribers.Franchisee1;
 
 import ballerina.net.kafka;
 import ballerina.log;

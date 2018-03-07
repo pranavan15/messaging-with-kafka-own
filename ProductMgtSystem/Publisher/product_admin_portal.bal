@@ -1,4 +1,4 @@
-package KafkaPublisher;
+package ProductMgtSystem.Publisher;
 
 import ballerina.net.kafka;
 import ballerina.net.http;

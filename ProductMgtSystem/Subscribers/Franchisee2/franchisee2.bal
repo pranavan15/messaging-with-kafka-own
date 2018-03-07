@@ -1,22 +1,22 @@
-package KafkaSubscribers.InventoryControlSystem;
+package ProductMgtSystem.Subscribers.Franchisee2;
 
-import ballerina.net.kafka;
 import ballerina.log;
+import ballerina.net.kafka;
 
 // Kafka subscriber configurations
 @Description {value:"Service level annotation to provide Kafka consumer configuration"}
 @kafka:configuration {
     bootstrapServers:"localhost:9092, localhost:9093",
     // Consumer group ID
-    groupId:"inventorySystem",
+    groupId:"franchisee2",
     // Listen from topic 'product-price'
     topics:["product-price"],
     // Poll every 1 second
     pollingInterval:1000
 }
 // Kafka service that listens from the topic 'product-price'
-// 'inventoryControlService' subscribed to new product price updates from the product admin and updates the Database
-service<kafka> inventoryControlService {
+// 'FranchiseeService2' subscribed to new product price updates from the product admin
+service<kafka> franchiseeService2 {
     // Triggered whenever a message added to the subscribed topic
     resource onMessage (kafka:Consumer consumer, kafka:ConsumerRecord[] records) {
         // Dispatched set of Kafka records to service and process each one by one
@@ -29,9 +29,8 @@ service<kafka> inventoryControlService {
             log:printInfo("New message received from the product admin");
             // log the retrieved Kafka record
             log:printInfo("Topic: " + records[counter].topic + "; Received Message: " + msg);
-            // Mock logic
-            // Update the database with the new price for the specified product
-            log:printInfo("Database updated with the new price for the specified product");
+            // Acknowledgement
+            log:printInfo("Acknowledgement from Franchisee 2");
             counter = counter + 1;
         }
     }
