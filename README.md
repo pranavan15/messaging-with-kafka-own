@@ -97,7 +97,7 @@ service<kafka> inventoryControlService {
 
 ```
 
-In the above code, we have implemented a Kafka service that is subscribed to listen the topic 'product-price'. We require providing the Kafka subscriber configurations for this Kafka service. @kafka:configuration {} block contains these Kafka consumer configurations. Field `bootstrapServers` provides the list of host and port pairs, which are the addresses of the Kafka brokers in a "bootstrap" Kafka cluster. Field `groupId` specifies the Id of the consumer group. Field `topics` specifies the topics need to be listened by this consumer. Field `pollingInterval` is the time interval that a consumer polls the topic. 
+In the above code, we have implemented a Kafka service that is subscribed to listen the topic 'product-price'. We require providing the Kafka subscriber configurations for this Kafka service. `@kafka:configuration {}` block contains these Kafka consumer configurations. Field `bootstrapServers` provides the list of host and port pairs, which are the addresses of the Kafka brokers in a "bootstrap" Kafka cluster. Field `groupId` specifies the Id of the consumer group. Field `topics` specifies the topics need to be listened by this consumer. Field `pollingInterval` is the time interval that a consumer polls the topic. 
 
 Resource `onMessage` will be triggered whenever a message published to the topic specified.
 
