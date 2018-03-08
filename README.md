@@ -65,15 +65,14 @@ In ballerina, the unit test cases should be in the same package and the naming c
 * Test functions should contain test prefix.
   * e.g.: testProductAdminService()
 
-This guide contains unit test case for Product admin service.
-Test file is in the same package in which the `product_admin_portal.bal` file is located.
+This guide contains unit test case for the HTTP service `productAdminService` from file `product_admin_portal.bal`. Test file is in the same package in which the above-mentioned file is located.
 
 To run the unit test, go to the sample root directory and run the following command
    ```bash
-   <SAMPLE_ROOT_DIRECTORY>$ ballerina test KafkaPublisher/
+   <SAMPLE_ROOT_DIRECTORY>$ ballerina test ProductMgtSystem/Publisher/
    ```
 
-To check the implementation of this test file, please go to https://github.com/pranavan15/messaging-with-kafka/blob/master/KafkaPublisher/product_admin_portal_test.bal.
+To check the implementation of this test file, please go to https://github.com/pranavan15/messaging-with-kafka/blob/master/ProductMgtSystem/Publisher/product_admin_portal_test.bal.
 
 ## <a name="deploying-the-scenario"></a> Deployment
 
