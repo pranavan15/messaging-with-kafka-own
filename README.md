@@ -104,7 +104,65 @@ Resource `onMessage` will be triggered whenever a message published to the topic
 To check the implementations of the other subscribers refer [franchisee1.bal](https://github.com/pranavan15/messaging-with-kafka/blob/master/ProductMgtSystem/Subscribers/Franchisee1/franchisee1.bal) and [franchisee2.bal](https://github.com/pranavan15/messaging-with-kafka/blob/master/ProductMgtSystem/Subscribers/Franchisee2/franchisee2.bal).
 
 
+Let's next focus on the implementation of `product_admin_portal.bal`, which acts as the message publisher. It contains an HTTP service using which a product admin can update the price of a product. Skeleton of `product_admin_portal.bal` is attached below. Inline comments added for better understanding.
 
+##### product_admin_portal.bal
+```ballerina
+package ProductMgtSystem.Publisher;
+
+// imports
+
+// Constants to store admin credentials
+const string ADMIN_USERNAME = "Admin";
+const string ADMIN_PASSWORD = "Admin";
+
+// Product admin service
+@http:configuration {basePath:"/product"}
+service<http> productAdminService {
+    // Resource that allows the admin to send a price update for a product
+    @http:resourceConfig {methods:["POST"]}
+    resource updatePrice (http:Connection connection, http:InRequest request) {
+      
+        // Try getting the JSON payload from the incoming request
+
+        //Check whether the specified value for 'Price' is appropriate
+
+        // Check whether the credentials provided are Admin credentials
+
+        // Kafka message publishing logic
+        // Construct and serialize the message to be published to the Kafka topic
+        json priceUpdateInfo = {"Product":productName, "UpdatedPrice":newPrice};
+        blob serializedMsg = priceUpdateInfo.toString().toBlob("UTF-8");
+        // Create the Kafka ProducerRecord and specify the destination topic - 'product-price' in this case
+        // Set a valid partition number, which will be used when sending the record
+        kafka:ProducerRecord record = {value:serializedMsg, topic:"product-price", partition:0};
+
+        // Create a Kafka ProducerConfig with optional parameters 'clientID' - for broker side logging,
+        // acks - number of acknowledgments for requests, noRetries - number of retries if record send fails
+        kafka:ProducerConfig producerConfig = {clientID:"basic-producer", acks:"all", noRetries:3};
+        // Produce the message and publish it to the Kafka topic
+        kafkaProduce(record, producerConfig);
+        
+        // Send a success status to the admin request
+    }
+}
+
+// Function to produce and publish a given record to a Kafka topic
+function kafkaProduce (kafka:ProducerRecord record, kafka:ProducerConfig producerConfig) {
+    // Kafka ProducerClient endpoint
+    endpoint<kafka:ProducerClient> kafkaEP {
+        create kafka:ProducerClient(["localhost:9092, localhost:9093"], producerConfig);
+    }
+    // Publish the record to the specified topic
+    kafkaEP.sendAdvanced(record);
+    kafkaEP.flush();
+    // Close the endpoint
+    kafkaEP.close();
+}
+
+```
+
+Refer [inventory_control_system.bal](https://github.com/pranavan15/messaging-with-kafka/blob/master/ProductMgtSystem/Publisher/product_admin_portal.bal) to see the complete implementation of the above.
 
 ## <a name="testing"></a> Testing 
 
