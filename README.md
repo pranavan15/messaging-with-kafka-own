@@ -78,7 +78,37 @@ Let's get started with the implementation of `_.bal`file, which contains the _. 
    ```
    Here we created a new topic consists of two partitions with a single replication factor.
    
-4. 
+4. Run both the HTTP service `productAdminService`, which publishes messages to the Kafka topic and Kafka services in `Subscribers` package, which subscribed to listen the Kafka topic by entering the following commands in sperate terminals
+
+   ```bash
+    <SAMPLE_ROOT_DIRECTORY>$ ballerina run ProductMgtSystem/Publisher/
+   ```
+
+   ```bash
+    <SAMPLE_ROOT_DIRECTORY>$ ballerina run ProductMgtSystem/Subscribers/<Subscriber_Package_Name>/
+   ```
+   
+5.  Invoke the `productAdminService` by sending a POST request to update the price of a product with Admin credentials
+
+    ```bash
+    curl -v -X POST -d '{"Username":"Admin", "Password":"Admin", "Product":"ABC", "Price":100.00}' \
+     "http://localhost:9090/product/updatePrice" -H "Content-Type:application/json"
+    ```
+
+    The `productAdminService` should respond something similar,
+    ```bash
+     < HTTP/1.1 200 OK
+    {"Status":"Success"}
+    ```
+
+    Sample Log Messages in subscribed Kafka services
+    ```bash
+     INFO  [ProductMgtSystem.Subscribers.<All>] - New message received from the product admin 
+     INFO  [ProductMgtSystem.Subscribers.<All>] - Topic: product-price; Received Message {"Product":"ABC","UpdatedPrice":100.0} 
+     INFO  [ProductMgtSystem.Subscribers.Franchisee1] - Acknowledgement from Franchisee 1 
+     INFO  [ProductMgtSystem.Subscribers.Franchisee2] - Acknowledgement from Franchisee 2 
+     INFO  [ProductMgtSystem.Subscribers.InventoryControl] - Database updated with the new price for the specified product
+    ```
 
 ### <a name="unit-testing"></a> Writing unit tests 
 
