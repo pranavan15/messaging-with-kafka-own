@@ -45,6 +45,11 @@ messaging-with-kafka
 
 ```
 
+Package `Publisher` contains the file that handles the Kafka message publishing and a unit test file. 
+
+Package `Subscribers` contains three different subscribers who subscribed to Kafka topic 'product-price'.
+
+
 ### <a name="Implementation"></a> Implementation
 
 Let's get started with the implementation of `_.bal`file, which contains the _. Refer the code attached below. Inline comments are added for better understanding.
@@ -75,21 +80,19 @@ To check the implementation of this test file, please go to https://github.com/p
 Once you are done with the development, you can deploy the service using any of the methods that we listed below. 
 
 ### <a name="deploying-on-locally"></a> Deploying locally
-You can deploy the RESTful service that you developed above, in your local environment. You can create the Ballerina executable archive (.balx) first and then run it in your local environment as follows,
+You can deploy the services that you developed above, in your local environment. You can create the Ballerina executable archives (.balx) first and then run them in your local environment as follows,
 
 Building 
    ```bash
-    <SAMPLE_ROOT_DIRECTORY>$ ballerina build 
+    <SAMPLE_ROOT_DIRECTORY>$ ballerina build ProductMgtSystem/Publisher/
 
-    <SAMPLE_ROOT_DIRECTORY>$ ballerina build 
+    <SAMPLE_ROOT_DIRECTORY>$ ballerina build ProductMgtSystem/Subscribers/<Subscriber_Package_Name>/
 
    ```
 
 Running
    ```bash
-    <SAMPLE_ROOT_DIRECTORY>$ ballerina run 
-
-    <SAMPLE_ROOT_DIRECTORY>$ ballerina run 
+    <SAMPLE_ROOT_DIRECTORY>$ ballerina run <Exec_Archive_File_Name>
 
    ```
 
