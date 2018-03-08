@@ -58,6 +58,28 @@ Let's get started with the implementation of `_.bal`file, which contains the _. 
 
 ### <a name="try-it"></a> Try it out
 
+1. Start `ZooKeeper` instance with default configurations by entering the following command in a terminal
+
+   ```bash
+   <KAFKA_HOME_DIRECTORY>$ bin/zookeeper-server-start.sh config/zookeeper.properties
+   ```
+
+2. Start single `Kafka broker` instance with default configurations by entering the following command in a different terminal
+
+   ```bash
+   <KAFKA_HOME_DIRECTORY>$ bin/kafka-server-start.sh config/server.properties
+   ```
+   Here we started the Kafka server on host:localhost, port:9092. Now we have a working Kafka cluster.
+
+3. Create a new topic `product-price` on Kafka cluster by entering the following command in a different terminal 
+
+   ```bash
+   <KAFKA_HOME_DIRECTORY>$ bin/kafka-topics.sh --create --topic product-price --zookeeper localhost:2181 --replication-factor 1 --partitions 2
+   ```
+   Here we created a new topic consists of two partitions with a single replication factor.
+   
+4. 
+
 ### <a name="unit-testing"></a> Writing unit tests 
 
 In ballerina, the unit test cases should be in the same package and the naming convention should be as follows,
