@@ -162,7 +162,7 @@ function kafkaProduce (kafka:ProducerRecord record, kafka:ProducerConfig produce
 
 ```
 
-Refer [inventory_control_system.bal](https://github.com/pranavan15/messaging-with-kafka/blob/master/ProductMgtSystem/Publisher/product_admin_portal.bal) to see the complete implementation of the above.
+Refer [product_admin_portal.bal](https://github.com/pranavan15/messaging-with-kafka/blob/master/ProductMgtSystem/Publisher/product_admin_portal.bal) to see the complete implementation of the above.
 
 ## <a name="testing"></a> Testing 
 
