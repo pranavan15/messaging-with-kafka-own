@@ -120,12 +120,12 @@ const string ADMIN_PASSWORD = "Admin";
 @http:configuration {basePath:"/product"}
 service<http> productAdminService {
     // Resource that allows the admin to send a price update for a product
-    @http:resourceConfig {methods:["POST"]}
+    @http:resourceConfig {methods:["POST"], consumes:["application/json"], produces:["application/json"]}
     resource updatePrice (http:Connection connection, http:InRequest request) {
       
         // Try getting the JSON payload from the incoming request
 
-        //Check whether the specified value for 'Price' is appropriate
+        // Check whether the specified value for 'Price' is appropriate
 
         // Check whether the credentials provided are Admin credentials
 
