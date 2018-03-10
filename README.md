@@ -234,7 +234,7 @@ To run the unit test, go to the sample root directory and run the following comm
    <SAMPLE_ROOT_DIRECTORY>$ ballerina test ProductMgtSystem/Publisher/
    ```
 
-To check the implementation of this test file, please go to https://github.com/pranavan15/messaging-with-kafka/blob/master/ProductMgtSystem/Publisher/product_admin_portal_test.bal.
+To check the implementation of this test file, refer [product_admin_portal_test.bal](https://github.com/pranavan15/messaging-with-kafka/blob/master/ProductMgtSystem/Publisher/product_admin_portal_test.bal).
 
 ## <a name="deploying-the-scenario"></a> Deployment
 
