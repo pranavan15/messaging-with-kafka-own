@@ -5,7 +5,7 @@ This guide walks you through the process of messaging with Apache Kafka using Ba
 To understanding how you can use Kafka for publish-subscribe messaging, let's consider a real-world use case of a product management system. This product management system consists of a product admin portal using which the product administrator can update the price for a product. This price update message should be consumed by a couple of franchisees and an inventory control system to take appropriate actions. Kafka is an ideal messaging system for this scenario. In this particular use case, once the admin updates the price of a product, the update message is published to a Kafka topic called 'product-price' to which the franchisees and the inventory control system subscribed to listen. The below diagram illustrates this use case clearly.
 
 
-![alt text](https://github.com/pranavan15/messaging-with-kafka/blob/master/images/Kafka.png)
+![alt text](/images/Kafka.png)
 
 
 In this example Ballerina Kafka Connector is used to connect Ballerina and Apache Kafka. With this Kafka Connector, Ballerina can act as both message publisher and subscriber.
